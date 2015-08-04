@@ -1,0 +1,33 @@
+<nav role="navigation" class="navbar navbar-default">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a href="<%=home_path%>" class="navbar-brand">Home</a>
+    </div>
+  <div id="navbarCollapse" class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+      <li><%= link_to "Articles", articles_path %></li>
+      <li><%= link_to "Blog", blog_path %></li>
+      <li><%= link_to "Newsletter", newsletter_path %></li>
+      <li><%= link_to "Products", products_path %></li>
+      <li><%= link_to "Calendar", calendar_path %></li>
+      <li><%= link_to "About", about_us_path %></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+          Welcome, <%= current_user.email %>!<br/>
+      <% end %>
+      <li><a href="<%=contact_us_path%>">Contacts</a></li>
+      <%= if user_signed_in? %>
+          <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %>Logout</li>
+      <% else %>
+          <li><%= link_to "Login", new_user_session_path %>Login</li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,35 @@
+<h1>Contact Us</h1>
+
+<% if flash['error'] %>
+    <div class='error'><%= flash['error'] %></div>
+<% end %>
+
+<% if !@submitted || @form_error %>
+    <br/>
+    <%= form_for contact_us_path :method => "POST" do %>
+        <%= label_tag :name, "Enter your Name:  " %>
+        <%= text_field_tag :name, @name, :autofocus => "autofocus", :placeholder => "Your Name" %>
+        <br/>
+        <%= label_tag :email, "Enter your Email Address:  " %>
+        <%= email_field_tag :email, @email, :placeholder => "something@domain.com" %>
+        <br/>
+        <%= label_tag :question, "Write your question: " %><br/>
+        <%= text_area_tag :question, @question, :size => "50x10"%>
+        <br/>
+        <%= check_box_tag :newsletter, "newsletter", @newsletter %> Subscribe to Newsletter
+        <br/>
+        <%= radio_button_tag :gender, "Male", @male%> Male <br/>
+        <%= radio_button_tag :gender, "Female", @female%> Female <br/>
+
+        <%= select_tag :product, options_for_select(
+                                       [
+                                               ['Enter Item Name', 0],
+                                               ['First Book', 1],
+                                               ['Second Book', 2],
+                                               ['Third Book', 3]
+                                       ], @product ) %> <br/><br/>
+        <%= submit_tag "Ask Question" %>
+    <% end %>
+<% else %>
+    <p>Thank you for the question!</p>
+<% end %>
