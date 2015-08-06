@@ -7,13 +7,7 @@ gem 'linguistics'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 
-group :production do
-  gem 'pg'
-end
-
-group :development do
-  gem 'sqlite3'
-end
+gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
